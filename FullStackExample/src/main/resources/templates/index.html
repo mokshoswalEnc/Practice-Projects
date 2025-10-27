@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student List</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css"/>
+</head>
+<body class="container mt-4">
+    <h2 class="text-center mb-4">Student Management System</h2>
+    <a href="/add" class="btn btn-primary mb-3">Add Student</a>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.course}"></td>
+                <td>
+                    <a th:href="@{/edit/{id}(id=${student.id})}" class="btn btn-sm btn-warning">Edit</a>
+                    <a th:href="@{/delete/{id}(id=${student.id})}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
